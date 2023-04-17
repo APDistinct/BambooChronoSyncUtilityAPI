@@ -1,0 +1,37 @@
+[
+    {
+        "id": "8668",
+        "employeeId": "941",
+        "status": {
+            "lastChanged": "2023-04-10",
+            "lastChangedByUserId": "2501",
+            "status": "approved"
+        },
+        "name": "Andrei Dokuchaev",
+        "start": "2023-04-03",
+        "end": "2023-04-04",
+        "created": "2023-04-10",
+        "type": {
+            "id": "3",
+            "name": "Day Off/ Unpaid Vacation",
+            "icon": "happy-calendar"
+        },
+        "amount": {
+            "unit": "hours",
+            "amount": "12"
+        },
+        "actions": {
+            "view": true,
+            "edit": true,
+            "cancel": false,
+            "approve": false,
+            "deny": false,
+            "bypass": false
+        },
+        "dates": {
+            "2023-04-03": "8",
+            "2023-04-04": "4"
+        },
+        "notes": {}
+    }
+]

@@ -16,11 +16,11 @@ namespace BambooChronoSyncUtility.Tests
         {
             string json = Read("time_offrequests1"); //.ToLower();
             var job = JsonConvert.DeserializeObject<JArray>(json);
-            var request1 = JsonConvert.DeserializeObject<Time_offRequest[]>(json);
+            var request1 = JsonConvert.DeserializeObject<TimeOffGetResponse[]>(json);
             Assert.NotNull(request1);
             Assert.NotEmpty(request1);
             Assert.Single(request1);
-            var request2 = JsonConvert.DeserializeObject<IEnumerable< Time_offRequest>>(Read("time_offrequests2"))?.ToArray();
+            var request2 = JsonConvert.DeserializeObject<IEnumerable< TimeOffGetResponse>>(Read("time_offrequests2"))?.ToArray();
             Assert.NotNull(request2);
             Assert.NotEmpty(request2);
             Assert.Single(request2);

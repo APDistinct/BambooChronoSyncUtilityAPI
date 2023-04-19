@@ -10,7 +10,7 @@ namespace BambooChronoSyncUtility.Service.Models
 {
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy), ItemNullValueHandling = NullValueHandling.Ignore)]
 
-    public class Time_offRequest
+    public class TimeOffGetResponse
     {
         public class RequestActions
         {
@@ -60,7 +60,7 @@ namespace BambooChronoSyncUtility.Service.Models
             public RequestType Type { get; set; }
             public RequestAmount Amount { get; set; }
             public RequestActions Actions { get; set; }
-            public Dictionary<string, double> Dates { get; set; }
+            public Dictionary</*string*/DateOnly, double> Dates { get; set; }
         
 
         //public List<EmployeesTimeOff> Employees { get; set; }

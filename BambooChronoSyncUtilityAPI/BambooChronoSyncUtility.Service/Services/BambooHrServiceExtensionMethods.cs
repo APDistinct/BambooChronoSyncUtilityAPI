@@ -34,10 +34,6 @@ namespace BambooChronoSyncUtility.Service.Services
 
             try
             {
-                //var str = GetEmployeesTimeOffRequestsHistoryUrl(userId, start: start.ToString("yyy-MM-dd"), end: end.ToString("yyy-MM-dd"));
-                //var stodos = await client.GetFromJsonAsync<string[]>(
-                //    GetEmployeesTimeOffRequestsHistoryUrl(userId, start: start.ToString("yyy-MM-dd"), end: end.ToString("yyy-MM-dd")),
-                //    new JsonSerializerOptions(JsonSerializerDefaults.Web));
                 // Make HTTP GET request
                 // Parse JSON response deserialize into Time_offRequest types
                 TimeOffGetResponse[]? todos = await client.GetFromJsonAsync<TimeOffGetResponse[]>(                
@@ -55,17 +51,12 @@ namespace BambooChronoSyncUtility.Service.Services
         }
         private async Task<TimeOffGetResponse[]> GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(int userId, DateOnly start, DateOnly end)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get,
-                GetEmployeesTimeOffRequestsHistoryUrl(userId, start.ToString("yyy-MM-dd"), end.ToString("yyy-MM-dd")));
-
-            //var client = _clientFactory.CreateClient(BamboohrHttpClientFactoryName);
-
+            //var request = new HttpRequestMessage(HttpMethod.Get,
+            //    GetEmployeesTimeOffRequestsHistoryUrl(userId, start.ToString("yyy-MM-dd"), end.ToString("yyy-MM-dd")));
 
             using HttpClient client = _clientFactory.CreateClient(BamboohrHttpClientFactoryName);
             var str = GetEmployeesTimeOffRequestsHistoryUrl(userId, start.ToString("yyy-MM-dd"), end.ToString("yyy-MM-dd"));
             
-            //var client = _clientFactory.CreateClient(BamboohrHttpClientFactoryName);
-
             var response = await client.GetAsync(str);
             //var response = await client.SendAsync(request);
             bool ret = response.IsSuccessStatusCode;
@@ -75,16 +66,7 @@ namespace BambooChronoSyncUtility.Service.Services
 
             var jsonArray = JArray.Parse(history);
             TimeOffGetResponse[]? todos = JsonConvert.DeserializeObject<TimeOffGetResponse[]>(history);
-
-            //var stodos = await client.GetFromJsonAsync<string[]>(
-            //    GetEmployeesTimeOffRequestsHistoryUrl(userId, start.ToString("yyy-MM-dd"), end.ToString("yyy-MM-dd")),
-            //    new JsonSerializerOptions(JsonSerializerDefaults.Web));
-            // Make HTTP GET request
-            // Parse JSON response deserialize into Time_offRequest types
-            //TimeOffGetResponse[]? todos = await client.GetFromJsonAsync<TimeOffGetResponse[]>(
-            //    GetEmployeesTimeOffRequestsHistoryUrl(userId, start: start.ToString("yyy-MM-dd"), end: end.ToString("yyy-MM-dd"))
-            //    /*,new JsonSerializerOptions(JsonSerializerDefaults.Web)*/);
-
+            
             return todos ?? Array.Empty<TimeOffGetResponse>();
         }
             //        private void Synchronize(DateOnly start, DateOnly end, IEnumerable<int> ids)

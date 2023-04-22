@@ -18,6 +18,7 @@ namespace BambooChronoSyncUtility.Service.Services
         private readonly ILogger<BambooHrService> _logger;
         public BambooHrService(IHttpClientFactory clientFactory, ILogger<BambooHrService> logger) =>
         (_clientFactory, _logger) = (clientFactory, logger);
+        private readonly object locker = new object();
 
         public async Task<IEnumerable<TimeOffGetResponse>> GetTimeOff(DateOnly start, DateOnly end, IEnumerable<int> ids)
         {
@@ -34,9 +35,31 @@ namespace BambooChronoSyncUtility.Service.Services
             //});
             return list; // await Task.FromResult(list);
         }
-        //public async Task Synchronize(DateOnly start, DateOnly end, IEnumerable<int> ids)
-        //{
 
-        //}
+        public async Task<IEnumerable<TimeOffModel>> Synchronize(DateOnly start, DateOnly end, IEnumerable<int> ids)
+        {
+            //int locker = 1;
+            Dictionary<TimeDictionary, double> time  = new Dictionary<TimeDictionary, double>();
+            var models = new List< TimeOffModel>();
+            var tasks = new List<Task>();
+            tasks.AddRange(ids.Select(async id =>
+            {
+                var model = new TimeOffModel();
+                var ll = await GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(id, start, end);
+                foreach(var togr in ll)
+                {
+                    if(togr != null)
+                    {
+                        model.Add(togr.Convert());
+                    }
+                }
+                lock(locker) 
+                {
+                    models.Add(model);
+                }
+            }));
+            await Task.WhenAll(tasks);
+            return models;
+        }
     }
 }

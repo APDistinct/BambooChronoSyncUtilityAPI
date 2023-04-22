@@ -8,24 +8,44 @@ using System.Threading.Tasks;
 
 namespace BambooChronoSyncUtility.Service.Models
 {
+    public static class TimeOffGetResponseExtension
+    {
+        public static TimeOffModel Convert(this TimeOffGetResponse offResponse)
+        {
+            TimeOffModel offModel = new TimeOffModel
+            {
+                UserId = offResponse.EmployeeId
+            };
+            int coeff = 1;
+            int type = offResponse.Type.Id;
+            if(offResponse.Amount.Unit == "days") coeff = 8;
+            foreach(var d in offResponse.Dates)
+            {
+                var td = new TimeDictionary() { Date = d.Key, Type = type };
+                offModel.Time.Add(td, d.Value * coeff);
+            }
+            return offModel;
+        }
+    }
+
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy), ItemNullValueHandling = NullValueHandling.Ignore)]
 
     public class TimeOffGetResponse
     {
         public class RequestActions
         {
-            public bool View {get; set;}
+            public bool View { get; set; }
 
-            public bool Edit { get; set;}
-            public bool Cancel { get; set;}
-            public bool Approve { get; set;}
-            public bool Deny { get; set;}
-            public bool Bypass { get; set;}
+            public bool Edit { get; set; }
+            public bool Cancel { get; set; }
+            public bool Approve { get; set; }
+            public bool Deny { get; set; }
+            public bool Bypass { get; set; }
         }
-    public class RequestAmount
+        public class RequestAmount
         {
-            public string Unit {get; set;}
-            public double Amount { get; set;}
+            public string Unit { get; set; }
+            public double Amount { get; set; }
         }
         public class RequestType
         {
@@ -41,26 +61,27 @@ namespace BambooChronoSyncUtility.Service.Models
             public int LastChangedByUserId { get; set; }
             public string Status { get; set; }
         }
-        
-            [JsonProperty]
-            public int Id { get; set; }
-            [JsonProperty]
-            public string? Name { get; set; }
-            [JsonProperty]
-            public DateOnly /*DateTime*/ Start { get; set; }
-            [JsonProperty]
-            public DateOnly /*DateTime*/ End { get; set; }
-            [JsonProperty]
-            public DateTime Created { get; set; }
-            [JsonProperty]
-            public int EmployeeId { get; set; } = 0;
-            [JsonProperty]
-            //public IEnumerable< string?>? Notes { get; set; }
-            public RequestStatus Status { get; set; }
-            public RequestType Type { get; set; }
-            public RequestAmount Amount { get; set; }
-            public RequestActions Actions { get; set; }
-            public Dictionary</*string*/DateOnly, double> Dates { get; set; }
+
+        [JsonProperty]
+        public int Id { get; set; }
+        [JsonProperty]
+        public string? Name { get; set; }
+        [JsonProperty]
+        public DateOnly /*DateTime*/ Start { get; set; }
+        [JsonProperty]
+        public DateOnly /*DateTime*/ End { get; set; }
+        [JsonProperty]
+        public DateTime Created { get; set; }
+        [JsonProperty]
+        public int EmployeeId { get; set; } = 0;
+        [JsonProperty]
+        //public IEnumerable< string?>? Notes { get; set; }
+        public RequestStatus Status { get; set; }
+        public RequestType Type { get; set; }
+        public RequestAmount Amount { get; set; }
+        public RequestActions Actions { get; set; }
+        public Dictionary</*string*/DateOnly, double> Dates { get; set; }
+
         
 
         //public List<EmployeesTimeOff> Employees { get; set; }
@@ -99,6 +120,6 @@ namespace BambooChronoSyncUtility.Service.Models
         //    "2023-04-04": "4"
         //},
         //"notes": {}
-    //}
+        //}
     }
 }

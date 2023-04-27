@@ -1,0 +1,143 @@
+[
+    {
+        "id": "8668",
+        "employeeId": "941",
+        "status": {
+            "lastChanged": "2023-04-10",
+            "lastChangedByUserId": "2501",
+            "status": "approved"
+        },
+        "name": "Andrei Dokuchaev",
+        "start": "2023-04-03",
+        "end": "2023-04-04",
+        "created": "2023-04-10",
+        "type": {
+            "id": "3",
+            "name": "Day Off/ Unpaid Vacation",
+            "icon": "happy-calendar"
+        },
+        "amount": {
+            "unit": "hours",
+            "amount": "12"
+        },
+        "actions": {
+            "view": true,
+            "edit": true,
+            "cancel": false,
+            "approve": false,
+            "deny": false,
+            "bypass": false
+        },
+        "dates": {
+            "2023-04-03": "8",
+            "2023-04-04": "4"
+        },
+        "notes": {}
+    },
+    {
+        "id": "8727",
+        "employeeId": "941",
+        "status": {
+            "lastChanged": "2023-04-17",
+            "lastChangedByUserId": "2501",
+            "status": "approved"
+        },
+        "name": "Andrei Dokuchaev",
+        "start": "2023-04-13",
+        "end": "2023-04-14",
+        "created": "2023-04-17",
+        "type": {
+            "id": "3",
+            "name": "Day Off/ Unpaid Vacation",
+            "icon": "happy-calendar"
+        },
+        "amount": {
+            "unit": "hours",
+            "amount": "16"
+        },
+        "actions": {
+            "view": true,
+            "edit": true,
+            "cancel": false,
+            "approve": false,
+            "deny": false,
+            "bypass": false
+        },
+        "dates": {
+            "2023-04-13": "8",
+            "2023-04-14": "8"
+        },
+        "notes": {}
+    },
+    {
+        "id": "8728",
+        "employeeId": "941",
+        "status": {
+            "lastChanged": "2023-04-17",
+            "lastChangedByUserId": "2501",
+            "status": "approved"
+        },
+        "name": "Andrei Dokuchaev",
+        "start": "2023-04-19",
+        "end": "2023-04-20",
+        "created": "2023-04-17",
+        "type": {
+            "id": "1",
+            "name": "Vacation",
+            "icon": "time-off-calendar"
+        },
+        "amount": {
+            "unit": "hours",
+            "amount": "16"
+        },
+        "actions": {
+            "view": true,
+            "edit": true,
+            "cancel": false,
+            "approve": false,
+            "deny": false,
+            "bypass": false
+        },
+        "dates": {
+            "2023-04-19": "8",
+            "2023-04-20": "8"
+        },
+        "notes": {}
+    },
+    {
+        "id": "8800",
+        "employeeId": "941",
+        "status": {
+            "lastChanged": "2023-04-21",
+            "lastChangedByUserId": "2501",
+            "status": "approved"
+        },
+        "name": "Andrei Dokuchaev",
+        "start": "2023-04-25",
+        "end": "2023-04-25",
+        "created": "2023-04-21",
+        "type": {
+            "id": "19",
+            "name": "Public Holidays",
+            "icon": "happy-calendar"
+        },
+        "amount": {
+            "unit": "days",
+            "amount": "1"
+        },
+        "actions": {
+            "view": true,
+            "edit": true,
+            "cancel": true,
+            "approve": false,
+            "deny": false,
+            "bypass": false
+        },
+        "dates": {
+            "2023-04-25": "1"
+        },
+        "notes": {
+            "manager": "+"
+        }
+    }
+]

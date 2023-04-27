@@ -12,7 +12,12 @@ using Newtonsoft.Json;
 
 namespace BambooChronoSyncUtility.Service.Services
 {
-    public partial class BambooHrService
+    public interface IBambooHrAPIService
+    {
+        //Task<TimeOffGetResponse[]> GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI1(int userId, DateOnly start, DateOnly end);
+        Task<TimeOffGetResponse[]> GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(int userId, DateOnly start, DateOnly end);
+    }
+    public class BambooHrAPIService : IBambooHrAPIService
     {
         private readonly IHttpClientFactory _clientFactory = null!;
         //private const string GetEmployeesUrl = "reports/custom?format=json";
@@ -20,7 +25,11 @@ namespace BambooChronoSyncUtility.Service.Services
         private static string GetEmployeesTimeOffRequestsHistoryUrl(int userId, string start, string end)
     => $"time_off/requests/?employeeId={userId}&status=approved&start={start}&end={end}";
 
-        private async Task<TimeOffGetResponse[]> GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI1(int userId, DateOnly start, DateOnly end)
+        public BambooHrAPIService(IHttpClientFactory clientFactory) => _clientFactory = clientFactory;
+       
+            
+
+        public async Task<TimeOffGetResponse[]> GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI1(int userId, DateOnly start, DateOnly end)
         {
            // var validCheckDate = GetValidDateTime(date);
 
@@ -49,7 +58,7 @@ namespace BambooChronoSyncUtility.Service.Services
 
             return Array.Empty<TimeOffGetResponse>();
         }
-        private async Task<TimeOffGetResponse[]> GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(int userId, DateOnly start, DateOnly end)
+        public async Task<TimeOffGetResponse[]> GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(int userId, DateOnly start, DateOnly end)
         {
             //var request = new HttpRequestMessage(HttpMethod.Get,
             //    GetEmployeesTimeOffRequestsHistoryUrl(userId, start.ToString("yyy-MM-dd"), end.ToString("yyy-MM-dd")));

@@ -1,6 +1,8 @@
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using BambooChronoSyncUtility.Service.Models;
+using System.Reflection;
+using System.Security.Cryptography;
 
 namespace BambooChronoSyncUtility.Tests
 {
@@ -45,6 +47,7 @@ namespace BambooChronoSyncUtility.Tests
             string json = Read("time_offrequests1"); //.ToLower();
             var job = JsonConvert.DeserializeObject<JArray>(json);
             var request1 = JsonConvert.DeserializeObject<TimeOffGetResponse[]>(json);
+            Assert.NotNull(request1);
             var offModel = request1[0].Convert();
             Assert.NotNull(offModel);
             Assert.Equal(offModel.Time.Count, request1[0].Dates.Count);
@@ -91,9 +94,18 @@ namespace BambooChronoSyncUtility.Tests
             Assert.Equal(6, offModel.Time[ttimeDictionary]);
         }
         [Fact]
-        public void TimeOffGetResponse_To_TimeOffModelTest()
+        public void TimeOffModelAddTest()
         {
-
+            string json = Read("time_offrequests3"); //.ToLower();
+            var job = JsonConvert.DeserializeObject<JArray>(json);
+            var request1 = JsonConvert.DeserializeObject<TimeOffGetResponse[]>(json);
+            Assert.NotNull(request1);
+            var offModels = request1.Select(x => x.Convert()).ToList();
+            Assert.NotNull(offModels);
+            var offModel = new TimeOffModel() { UserId = offModels[0].UserId };
+            offModels.ForEach(model => offModel.Add(model));
+            Assert.True(offModel.Time.Count > 0);
+            //Assert.Equal(offModel.Time.Count, request1[0].Dates.Count);
         }
     }
 }

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BambooChronoSyncUtility.DAL.EF\BambooChronoSyncUtility.DAL.EF.csproj" />
     <ProjectReference Include="..\BambooChronoSyncUtility.Service\BambooChronoSyncUtility.Service.csproj" />
   </ItemGroup>
 

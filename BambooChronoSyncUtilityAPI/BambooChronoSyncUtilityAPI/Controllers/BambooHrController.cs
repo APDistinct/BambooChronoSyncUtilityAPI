@@ -35,5 +35,20 @@ namespace BambooChronoSyncUtilityAPI.Controllers
             return Ok(result);
             //return Ok(new { TimeReport = result });
         }
+        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(IEnumerable<TimeOffModel>))]
+        //[HttpPost("gettimereport/userId={userId}&dateFrom={dateFrom}&dayCount={dayCount}")]
+        [HttpPost("gettimeoffmodel")]
+        //public async Task<IActionResult> GetTimeReport([FromRoute] Guid userId, [FromRoute] DateTime dateFrom, [FromRoute] int dayCount)        
+        public async Task<IActionResult> GetTimeOffModel([FromBody] TimeOffGetRequest getRequest)
+        {
+            var result = await _service.Synchronize(getRequest.StartDate, getRequest.EndDate, getRequest.IdList);
+            //if (result.User == null)
+            //{
+            //    return Error(HttpStatusCode.NotFound, $"The user '{getRequest.UserId}' not found.");
+            //}
+
+            return Ok(result);
+            //return Ok(new { TimeReport = result });
+        }
     }
 }

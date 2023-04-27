@@ -12,12 +12,14 @@ namespace BambooChronoSyncUtility.Service.Services
     public interface IBambooHrService
     {
         Task<IEnumerable<TimeOffGetResponse>> GetTimeOff(DateOnly start, DateOnly end, IEnumerable<int> ids);
+        Task<IEnumerable<TimeOffModel>> Synchronize(DateOnly start, DateOnly end, IEnumerable<int> ids);
     }
     public partial class BambooHrService : IBambooHrService
     {
         private readonly ILogger<BambooHrService> _logger;
-        public BambooHrService(IHttpClientFactory clientFactory, ILogger<BambooHrService> logger) =>
-        (_clientFactory, _logger) = (clientFactory, logger);
+        private readonly IBambooHrAPIService _bambooService;
+        public BambooHrService(IBambooHrAPIService bambooService, ILogger<BambooHrService> logger) =>
+        (_bambooService, _logger) = (bambooService, logger);
         private readonly object locker = new object();
 
         public async Task<IEnumerable<TimeOffGetResponse>> GetTimeOff(DateOnly start, DateOnly end, IEnumerable<int> ids)
@@ -25,7 +27,7 @@ namespace BambooChronoSyncUtility.Service.Services
             List<TimeOffGetResponse> list = new List<TimeOffGetResponse>();
             foreach(var id in ids) 
             {
-                var ll = await GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(id, start, end);
+                var ll = await _bambooService.GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(id, start, end);
                 list.AddRange(ll);
             }
 
@@ -44,8 +46,8 @@ namespace BambooChronoSyncUtility.Service.Services
             var tasks = new List<Task>();
             tasks.AddRange(ids.Select(async id =>
             {
-                var model = new TimeOffModel();
-                var ll = await GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(id, start, end);
+                var model = new TimeOffModel() { UserId = id};
+                var ll = await _bambooService.GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(id, start, end);
                 foreach(var togr in ll)
                 {
                     if(togr != null)

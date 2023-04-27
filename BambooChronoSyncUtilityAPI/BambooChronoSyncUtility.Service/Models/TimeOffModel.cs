@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -23,19 +25,23 @@ namespace BambooChronoSyncUtility.Service.Models
             return offModel;
         }
     }
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy), ItemNullValueHandling = NullValueHandling.Ignore)]
     public struct TimeDictionary
     {
         public DateOnly Date { get; set; }
         public int Type { get; set; }
     }
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy), ItemNullValueHandling = NullValueHandling.Ignore)]
     public class TimeOffTimeModel
     {
         public TimeDictionary Key { get; set; } = new TimeDictionary();
         public double Value { get; set; }   
     }
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy), ItemNullValueHandling = NullValueHandling.Ignore)]
     public class TimeOffModel
     {
         //public ICollection<TimeOffTimeModel> Time { get; set; } = new List<TimeOffTimeModel>();
+        [JsonProperty]
         public  Dictionary<TimeDictionary, double> Time { get; set;} = new Dictionary<TimeDictionary, double>();
         public int UserId { get; set; }
     }

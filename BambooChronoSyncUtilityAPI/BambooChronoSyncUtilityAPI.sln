@@ -5,9 +5,11 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BambooChronoSyncUtilityAPI", "BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI.csproj", "{810C00DE-3B3C-4ECC-8F90-E0AE731A08EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BambooChronoSyncUtility.Service", "BambooChronoSyncUtility.Service\BambooChronoSyncUtility.Service.csproj", "{7980B1A9-64CB-4437-82A1-1CC4F2F990DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BambooChronoSyncUtility.Service", "BambooChronoSyncUtility.Service\BambooChronoSyncUtility.Service.csproj", "{7980B1A9-64CB-4437-82A1-1CC4F2F990DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BambooChronoSyncUtility.Tests", "BambooChronoSyncUtility.Tests\BambooChronoSyncUtility.Tests.csproj", "{54377BDE-B925-46B0-99CC-ABA397D05C99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BambooChronoSyncUtility.Tests", "BambooChronoSyncUtility.Tests\BambooChronoSyncUtility.Tests.csproj", "{54377BDE-B925-46B0-99CC-ABA397D05C99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BambooChronoSyncUtility.DAL.EF", "BambooChronoSyncUtility.DAL.EF\BambooChronoSyncUtility.DAL.EF.csproj", "{BA88D55E-9EDF-435F-A01C-464EB5C5ADC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{54377BDE-B925-46B0-99CC-ABA397D05C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54377BDE-B925-46B0-99CC-ABA397D05C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54377BDE-B925-46B0-99CC-ABA397D05C99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA88D55E-9EDF-435F-A01C-464EB5C5ADC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA88D55E-9EDF-435F-A01C-464EB5C5ADC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA88D55E-9EDF-435F-A01C-464EB5C5ADC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA88D55E-9EDF-435F-A01C-464EB5C5ADC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

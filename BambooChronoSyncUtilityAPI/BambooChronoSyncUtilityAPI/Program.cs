@@ -4,10 +4,18 @@ using BambooChronoSyncUtility.Service.Services;
 using NLog.Web;
 using System.Net.Http.Headers;
 using System.Text;
+using BambooChronoSyncUtility.DAL.EF.Model;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("TimeTrackDbConnection") ??
+                       throw new Exception("Missed config value 'ConnectionStrings:TimeTrackDbConnection'");
+
+builder.Services.AddDbContext<ChronoContext>(options =>
+    options.UseSqlServer(connectionString));
+
 
 builder.Services.AddControllers().AddNewtonsoftJson();
 // NLog: Setup NLog for Dependency injection
@@ -30,6 +38,7 @@ builder.Services.AddHttpClient("BambooHR_API", c =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IBambooHrAPIService, BambooHrAPIService>();
 builder.Services.AddScoped<IBambooHrService, BambooHrService>();
 
 

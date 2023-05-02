@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using BambooChronoSyncUtility.DAL.EF.Model;
 using Microsoft.EntityFrameworkCore;
+using BambooChronoSyncUtility.Service.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IBambooHrAPIService, BambooHrAPIService>();
 builder.Services.AddScoped<IBambooHrService, BambooHrService>();
+builder.Services.AddScoped<IChronoService, ChronoService>();
+builder.Services.AddScoped<IChronoRepository, ChronoRepository>();
 
 
 var app = builder.Build();

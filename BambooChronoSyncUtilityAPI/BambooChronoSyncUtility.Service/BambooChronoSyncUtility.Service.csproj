@@ -14,4 +14,8 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BambooChronoSyncUtility.DAL.EF\BambooChronoSyncUtility.DAL.EF.csproj" />
+  </ItemGroup>
+
 </Project>

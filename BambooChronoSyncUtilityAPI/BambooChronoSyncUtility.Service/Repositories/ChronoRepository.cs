@@ -12,6 +12,7 @@ namespace BambooChronoSyncUtility.Service.Repositories
     public interface IChronoRepository
     {
         Task<Dictionary<TimeDictionary, double>> GetTimeOff(int Id, DateTime start, DateTime end);
+        Task<Dictionary<TimeDictionary, string>> GetStatus(int Id, DateTime start, DateTime end);
     }
     public class ChronoRepository : IChronoRepository
     {
@@ -38,6 +39,30 @@ namespace BambooChronoSyncUtility.Service.Repositories
                 d[key] = t.Hours;
             }
             return d;
+        }
+        public async Task<Dictionary<TimeDictionary, string>> GetStatus(int Id, DateTime start, DateTime end)
+        {
+            var dic = new Dictionary<TimeDictionary, string>();
+            //var q = from ts in _context.TaskStatuses
+            //        where ts.UserId == Id && ts.ProjectId == TimeOffId && ts.StartDate <= end && ts.StartDate >= start
+            //        join vt in _context.VirtualTasks
+            //            on ts.ProjectId
+            //            equals vt.ProjectId
+            //        select new { ts.UserId, ts.Status, vt.Id, tr.TaskId, tr.Date };
+            var q = _context.TaskStatuses.Where(ts => ts.UserId == Id && ts.ProjectId == TimeOffId && ts.StartDate <= end && ts.StartDate >= start);
+            string str = q.ToQueryString(); //.ToString();
+            var list = await q.ToListAsync();
+            var stlist = _context.VirtualTasks.Where(x => x.ProjectId == TimeOffId).Select(vt => vt.Id).ToList();
+            for (var d = start; d <= end; )
+            {
+                foreach (var t in stlist)
+                {
+                    var key = new TimeDictionary() { Date = DateOnly.FromDateTime(d), Type = t };
+                    dic[key] = list.Where(l => l.TaskId == t && l.StartDate == GetMonday(d)).Select(x => x.Status).FirstOrDefault() ?? "New";
+                }
+                d = d.AddDays(1);
+            }
+            return dic;
         }
         public static DateTime GetMonday(DateTime date)
         {

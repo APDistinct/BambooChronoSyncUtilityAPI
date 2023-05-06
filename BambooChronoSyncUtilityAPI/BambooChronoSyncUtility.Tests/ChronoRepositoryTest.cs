@@ -32,8 +32,19 @@ namespace BambooChronoSyncUtility.Tests
             int id = 3;
             DateTime start = new DateTime(2008, 5, 1);
             DateTime end = new DateTime(2008, 5, 31);
-         
-            var ret =  await _repository.GetTimeOff(id, start, end);
+
+            var ret = await _repository.GetTimeOff(id, start, end);
+            Assert.NotNull(ret);
+
+        }
+        [Fact]
+        public async Task GetStatusTest()
+        {
+            int id = 3;
+            DateTime start = new DateTime(2009, 8, 1);
+            DateTime end = new DateTime(2009, 8, 31);
+
+            var ret = await _repository.GetStatus(id, start, end);
             Assert.NotNull(ret);
 
         }

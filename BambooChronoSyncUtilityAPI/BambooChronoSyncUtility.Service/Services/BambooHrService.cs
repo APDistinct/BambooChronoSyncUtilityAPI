@@ -41,7 +41,7 @@ namespace BambooChronoSyncUtility.Service.Services
         public async Task<IEnumerable<TimeOffModel>> Synchronize(DateOnly start, DateOnly end, IEnumerable<int> ids)
         {
             //int locker = 1;
-            Dictionary<TimeDictionary, double> time  = new Dictionary<TimeDictionary, double>();
+            //Dictionary<TimeDictionary, double> time  = new();
             var models = new List< TimeOffModel>();
             var tasks = new List<Task>();
             tasks.AddRange(ids.Select(async id =>

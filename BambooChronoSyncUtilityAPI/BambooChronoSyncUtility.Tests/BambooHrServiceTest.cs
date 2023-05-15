@@ -27,7 +27,7 @@ namespace BambooChronoSyncUtility.Tests
             apiservice.Setup(z => z.GetEmployeesTimeOffRequestsHistoryFromBambooHRAPI(It.IsAny<int>(), It.IsAny<DateOnly>(), It.IsAny<DateOnly>()))                
             .ReturnsAsync<int, DateOnly, DateOnly, IBambooHrAPIService, TimeOffGetResponse[]>((userId, start, end) => GetWIList(userId, start, end));
             
-            var service = new BambooHrService(apiservice.Object, null);
+            var service = new BambooHrServiceOld(apiservice.Object, null);
 
             // act
             var result = await service.Synchronize(start, end, ids);

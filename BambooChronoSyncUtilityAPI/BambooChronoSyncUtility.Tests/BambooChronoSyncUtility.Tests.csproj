@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Json\" />
+    <Folder Include="Xlsx\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +40,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Json\time_offrequests3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Xlsx\BambooHR_to_Chrono.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

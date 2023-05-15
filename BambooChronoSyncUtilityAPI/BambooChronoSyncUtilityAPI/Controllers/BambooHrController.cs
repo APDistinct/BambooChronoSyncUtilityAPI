@@ -5,6 +5,7 @@ using System.Net;
 using Swashbuckle.AspNetCore.Annotations;
 using BambooChronoSyncUtility.Service.Services;
 using BambooChronoSyncUtility.Service.Models;
+using BambooChronoSyncUtility.Application.Models;
 
 namespace BambooChronoSyncUtilityAPI.Controllers
 {
@@ -12,8 +13,8 @@ namespace BambooChronoSyncUtilityAPI.Controllers
     [ApiController]
     public class BambooHrController : AbstractController
     {
-        private readonly IBambooHrService _service;
-        public BambooHrController(IBambooHrService service, ILogger<BambooHrController> logger) : base(logger)
+        private readonly IBambooHrServiceOld _service;
+        public BambooHrController(IBambooHrServiceOld service, ILogger<BambooHrController> logger) : base(logger)
         {
             _service = service;
         }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using BambooChronoSyncUtility.Service.Models;
 using System.Reflection;
 using System.Security.Cryptography;
+using BambooChronoSyncUtility.Application.Models;
 
 namespace BambooChronoSyncUtility.Tests
 {
@@ -58,17 +59,17 @@ namespace BambooChronoSyncUtility.Tests
         public void TimeOffModelTest()
         {
             TimeOffModel offModel = new TimeOffModel();
-            //offModel.Time = new List< Dictionary<TimeDictionary, double> > ();
-            var listTimeOffModel = new List<TimeOffTimeModel>();
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    var timeDictionary = new TimeDictionary() { Date = DateOnly.FromDateTime(DateTime.UtcNow).AddDays(i), Type = j };
-                    listTimeOffModel.Add(new TimeOffTimeModel() { Key = timeDictionary, Value = j + i });
-                }
-            }
-            Assert.NotEmpty(listTimeOffModel);
+            //offModel.Time = new List<Dictionary<TimeDictionary, double>>();
+            //var listTimeOffModel = new List<TimeOffTimeModel>();
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    for (int j = 0; j < 3; j++)
+            //    {
+            //        var timeDictionary = new TimeDictionary() { Date = DateOnly.FromDateTime(DateTime.UtcNow).AddDays(i), Type = j };
+            //        listTimeOffModel.Add(new TimeOffTimeModel() { Key = timeDictionary, Value = j + i });
+            //    }
+            //}
+            //Assert.NotEmpty(listTimeOffModel);
             for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < 2; j++)

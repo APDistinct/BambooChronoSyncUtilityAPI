@@ -1,5 +1,6 @@
-﻿using BambooChronoSyncUtility.DAL.EF.Model;
-using BambooChronoSyncUtility.Service.Models;
+﻿using BambooChronoSyncUtility.Application;
+using BambooChronoSyncUtility.Application.Models;
+using BambooChronoSyncUtility.DAL.EF.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace BambooChronoSyncUtility.Service.Repositories
     {
         Task<Dictionary<TimeDictionary, double>> GetTimeOff(int Id, DateTime start, DateTime end);
         Task<Dictionary<TimeDictionary, string>> GetStatus(int Id, DateTime start, DateTime end);
+        Task GetChronoUserIds(IEnumerable<IUserIdChrono> idChronos);
     }
     public class ChronoRepository : IChronoRepository
     {
@@ -58,11 +60,26 @@ namespace BambooChronoSyncUtility.Service.Repositories
                 foreach (var t in stlist)
                 {
                     var key = new TimeDictionary() { Date = DateOnly.FromDateTime(d), Type = t };
-                    dic[key] = list.Where(l => l.TaskId == t && l.StartDate == GetMonday(d)).Select(x => x.Status).FirstOrDefault() ?? "New";
+                    dic[key] = list.Where(l => l.TaskId == t && l.StartDate == GetMonday(d)).Select(x => x.Status).FirstOrDefault() ?? Settings.StateNew;
                 }
                 d = d.AddDays(1);
             }
             return dic;
+        }
+        public async Task GetChronoUserIds(IEnumerable<IUserIdChrono> idChronos)
+        {
+            idChronos.ToList().ForEach(x => x.UserIdChrono = -1);
+            var names = idChronos.Select(x => x.UserName).ToList();
+            var list = await _context.Users.Where(u => names.Contains( u.DisplayName)).ToListAsync();
+            foreach (var u in list) 
+            {
+                var user = idChronos.Where(x => x.UserName.Equals(u.DisplayName)).FirstOrDefault();
+                if (user != null)
+                {
+                    user.UserIdChrono = u.UserId;
+                }
+            }
+            return;
         }
         public static DateTime GetMonday(DateTime date)
         {
@@ -70,5 +87,14 @@ namespace BambooChronoSyncUtility.Service.Repositories
             var ret = date.AddDays(DayOfWeek.Monday - date.DayOfWeek);
             return ret;
         }
+        private async Task StartTransaction()
+        {
+            await _context.Database.BeginTransactionAsync();
+        }
+        private async Task CommitTransaction()
+        {
+            await _context.Database.CommitTransactionAsync();
+        }
+
     }
 }

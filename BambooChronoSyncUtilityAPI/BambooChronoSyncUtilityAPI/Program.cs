@@ -7,6 +7,8 @@ using System.Text;
 using BambooChronoSyncUtility.DAL.EF.Model;
 using Microsoft.EntityFrameworkCore;
 using BambooChronoSyncUtility.Service.Repositories;
+using BambooChronoSyncUtility.Application.Models;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,11 +42,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IBambooHrAPIService, BambooHrAPIService>();
-builder.Services.AddScoped<IBambooHrService, BambooHrService>();
+builder.Services.AddScoped<IBambooHrServiceOld, BambooHrServiceOld>();
 builder.Services.AddScoped<IChronoService, ChronoService>();
 builder.Services.AddScoped<IChronoRepository, ChronoRepository>();
+builder.Services.AddScoped<IExcelRepository, ExcelRepository>();
 
-
+builder.Services.Configure<ExcelServiceOption>(builder.Configuration.GetSection("ExcelService"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

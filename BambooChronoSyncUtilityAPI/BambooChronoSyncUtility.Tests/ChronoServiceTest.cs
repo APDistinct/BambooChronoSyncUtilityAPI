@@ -12,7 +12,7 @@ namespace BambooChronoSyncUtility.Tests
         [Fact]
         public void GetMondayTest()
         {
-            ChronoService service = new ChronoService(null);
+            ChronoService service = new ChronoService(null, null);
             var test1 = DateTime.Parse("2023-05-01");
             var ret = ChronoService.GetMonday(test1.AddDays(3));
             Assert.True(ret.DayOfWeek == DayOfWeek.Monday);

@@ -22,9 +22,11 @@ namespace BambooChronoSyncUtility.Application
             DateOnly start, end;
             // Get period
             GetPeriod(ref start, ref end);
-            // Get list of id's
+            // Get list of id's and names
             List<UserIdName> userIdNameList = await GetEmploees();
+            // Add Chrono's userId's
             await GetEmploeesChrono(userIdNameList);
+            //  Id's for BambooHR
             var ids = userIdNameList.Select(u => u.UserIdBamboo).ToList();
             // Get data from BambooHR
             var bambooData = await _bambooService.GetTimeOff(start, end, ids);
@@ -32,13 +34,16 @@ namespace BambooChronoSyncUtility.Application
             {
                 return await Task.FromResult(0);
             }
+            //  TimeOff types mapping from BambooHR to Chrono
             types = await MakeTypeDictionary();
+
             // Analyze and get for import into Chrono
             var models = new List<TimeOffModel>();
+
             var tasks = new List<Task>();
             tasks.AddRange(ids.Select(async id =>
             {
-                var model = new TimeOffModel() { UserId = userIdNameList.First(u => u.UserIdBamboo.Equals( id) ).UserIdChrono};
+                var model = new TimeOffModel() { UserId = userIdNameList.First(u => u.UserIdBamboo.Equals(id) ).UserIdChrono};
                 // Get data from Chrono
                 // Info about time state
                 var status = await _chronoService.GetStatus(id, start.ToDateTime(TimeOnly.Parse("0:0:0")), end.ToDateTime(TimeOnly.Parse("0:0:0")));
@@ -76,7 +81,8 @@ namespace BambooChronoSyncUtility.Application
             
             // Save to Chrono
             await _chronoService.SaveDaysOff(models);
-            return await Task.FromResult(models.Count);
+            //return await Task.FromResult(models.Count);
+            return models.Count;
         }
         private async Task<List<UserIdName>> GetEmploees()
         {

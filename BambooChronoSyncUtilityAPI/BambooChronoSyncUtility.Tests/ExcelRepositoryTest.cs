@@ -22,8 +22,10 @@ namespace BambooChronoSyncUtility.Tests
             option.Value.EmployeeColumnName = "Employee";
             
             var repository = new ExcelRepository(option);
-            var ret = repository.GetUserIds();
+            var ret = await repository.GetUserIds();
             Assert.NotNull(ret);
+            Assert.True(ret.Count() > 0);
+            ret.ToList().ForEach(x => Assert.True(!string.IsNullOrEmpty(x.UserIdBamboo) && int.TryParse(x.UserIdBamboo, out int _)));
 
 
             //

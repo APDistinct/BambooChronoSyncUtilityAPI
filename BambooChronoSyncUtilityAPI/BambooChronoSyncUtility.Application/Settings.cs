@@ -10,6 +10,7 @@ namespace BambooChronoSyncUtility.Application
     {
         public static List<string> StatesWork = new List<string> { "Added", "Declined" };
         public static string StateNew = "New";
+        public static string StateAdd = "Added";
         public static List<string> StatesAll = new List<string>() { "Added", "Declined", "New" };
     }
 }

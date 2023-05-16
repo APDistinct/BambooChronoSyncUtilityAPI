@@ -49,13 +49,14 @@ namespace BambooChronoSyncUtility.Service.Services
             return await Task.FromResult(dic);
         }
 
-        public Task<int> SaveDaysOff(IEnumerable<TimeOffModel> timeOffModels)
+        public async Task<int> SaveDaysOff(IEnumerable<TimeOffModel> timeOffModels)
         {
+            int count = 0;
             foreach(var timeOffModel in timeOffModels)
             {
-
+                count += await _chronoRepository.SaveDaysOff(timeOffModel);
             }
-            throw new NotImplementedException();
+            return count;
         }
     }
 }

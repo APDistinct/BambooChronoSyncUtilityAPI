@@ -3,6 +3,7 @@ using BambooChronoSyncUtility.Application.Models;
 using BambooChronoSyncUtility.DAL.EF.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace BambooChronoSyncUtility.Service.Repositories
         Task<Dictionary<TimeDictionary, double>> GetTimeOff(int Id, DateTime start, DateTime end);
         Task<Dictionary<TimeDictionary, string>> GetStatus(int Id, DateTime start, DateTime end);
         Task GetChronoUserIds(IEnumerable<IUserIdChrono> idChronos);
+        Task<int> SaveDaysOff(TimeOffModel timeOffModel);
     }
     public class ChronoRepository : IChronoRepository
     {
@@ -70,7 +72,7 @@ namespace BambooChronoSyncUtility.Service.Repositories
         {
             idChronos.ToList().ForEach(x => x.UserIdChrono = -1);
             var names = idChronos.Select(x => x.UserName).ToList();
-            var list = await _context.Users.Where(u => names.Contains( u.DisplayName)).ToListAsync();
+            var list = await _context.Users.Where(u => u.DisplayName != null && names.Contains( u.DisplayName)).ToListAsync();
             foreach (var u in list) 
             {
                 var user = idChronos.Where(x => x.UserName.Equals(u.DisplayName)).FirstOrDefault();
@@ -80,6 +82,49 @@ namespace BambooChronoSyncUtility.Service.Repositories
                 }
             }
             return;
+        }
+        public async Task<int> SaveDaysOff(TimeOffModel timeOffModel)
+        {
+            int count = 0;
+            foreach(var t in timeOffModel.Time)
+            {
+                var report = await _context.TimeReports
+                    .FirstOrDefaultAsync(tr => tr.UserId == timeOffModel.UserId && tr.TaskId == t.Key.Type && tr.Date == t.Key.Date.ToDateTime(TimeOnly.Parse("0:0:0")));
+                if(report == null)
+                {
+                    await AddReport(timeOffModel.UserId, t.Key.Type, t.Key.Date.ToDateTime(TimeOnly.Parse("0:0:0")));
+                    count++;
+                }
+            }
+            return count; // await Task.FromResult(0);
+        }
+        private async Task AddReport(int userId, int taskId, DateTime date)
+        {
+            try
+            {
+                TimeReport report = new()
+                {
+                    Date = new DateTime(),
+                    UserId = userId,
+                    TaskId = taskId
+                };
+                _context.TimeReports.Add(report);
+                var q = _context.TaskStatuses
+                    .FirstOrDefaultAsync(ts => ts.UserId == userId && ts.ProjectId == TimeOffId && ts.StartDate == GetMonday(date) && ts.TaskId == taskId);
+                //string str = q.ToQueryString(); //.ToString();
+                var status = await q;
+                if(status == null)
+                {
+                    _context.TaskStatuses.Add(status = new()
+                    { ProjectId = TimeOffId, StartDate = GetMonday(date), Status = Settings.StateAdd, TaskId = taskId, UserId = userId });
+                }
+                
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception ex) 
+            {
+                //  Отловить и передать. Или же ловить выше...
+            }
         }
         public static DateTime GetMonday(DateTime date)
         {

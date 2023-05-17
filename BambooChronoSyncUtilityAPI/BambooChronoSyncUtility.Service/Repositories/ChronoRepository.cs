@@ -92,23 +92,34 @@ namespace BambooChronoSyncUtility.Service.Repositories
                     .FirstOrDefaultAsync(tr => tr.UserId == timeOffModel.UserId && tr.TaskId == t.Key.Type && tr.Date == t.Key.Date.ToDateTime(TimeOnly.Parse("0:0:0")));
                 if(report == null)
                 {
-                    await AddReport(timeOffModel.UserId, t.Key.Type, t.Key.Date.ToDateTime(TimeOnly.Parse("0:0:0")));
+                    await AddReport(timeOffModel.UserId, t.Key.Type, t.Key.Date.ToDateTime(TimeOnly.Parse("0:0:0")), t.Value);
                     count++;
                 }
             }
             return count; // await Task.FromResult(0);
         }
-        private async Task AddReport(int userId, int taskId, DateTime date)
+        private async Task AddReport(int userId, int taskId, DateTime date, double hours)
         {
+            var tr = await _context.TimeReports.FirstOrDefaultAsync(t => t.Type == 0);
+            int ty = tr.Type;
+            var tn = await _context.FieldInfos.FirstAsync(t => t.Id == 0);
             try
             {
+                await StartTransaction();
                 TimeReport report = new()
                 {
-                    Date = new DateTime(),
+                    Date = date,
                     UserId = userId,
-                    TaskId = taskId
+                    TaskId = taskId,
+                    ProjectId = TimeOffId,
+                    LastUpdated = DateTime.UtcNow,
+                    //Type = 0,
+                    Hours = hours,
+                    TypeNavigation = tn,
+
                 };
                 _context.TimeReports.Add(report);
+                await _context.SaveChangesAsync();
                 var q = _context.TaskStatuses
                     .FirstOrDefaultAsync(ts => ts.UserId == userId && ts.ProjectId == TimeOffId && ts.StartDate == GetMonday(date) && ts.TaskId == taskId);
                 //string str = q.ToQueryString(); //.ToString();
@@ -120,9 +131,11 @@ namespace BambooChronoSyncUtility.Service.Repositories
                 }
                 
                 await _context.SaveChangesAsync();
+                await CommitTransaction();
             }
             catch(Exception ex) 
             {
+                await RollbackTransaction();
                 //  Отловить и передать. Или же ловить выше...
             }
         }
@@ -140,6 +153,9 @@ namespace BambooChronoSyncUtility.Service.Repositories
         {
             await _context.Database.CommitTransactionAsync();
         }
-
+        private async Task RollbackTransaction()
+        {
+            await _context.Database.RollbackTransactionAsync();
+        }
     }
 }

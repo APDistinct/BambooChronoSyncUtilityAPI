@@ -19,6 +19,8 @@ namespace BambooChronoSyncUtilityAPI.Controllers
             _service = service;
         }
 
+        //[ApiExplorerSettings(IgnoreApi = true)] - убирает из сваггера, можно вызвать постманом
+        //[NonAction] - убирает метод вообще
 
         //[SwaggerResponse(StatusCodes.Status200OK, Type = typeof(UserBaseInfo))]
         [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(TimeOffGetResponse))]

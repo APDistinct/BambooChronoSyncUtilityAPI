@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using BambooChronoSyncUtility.Service.Repositories;
 using BambooChronoSyncUtility.Application.Models;
 using Microsoft.Extensions.Configuration;
+using BambooChronoSyncUtility.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,9 +45,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IBambooHrAPIService, BambooHrAPIService>();
 builder.Services.AddScoped<IBambooHrServiceOld, BambooHrServiceOld>();
 builder.Services.AddScoped<IChronoService, ChronoService>();
+builder.Services.AddScoped<IBambooHrService, BambooHrService>();
 builder.Services.AddScoped<IChronoRepository, ChronoRepository>();
 builder.Services.AddScoped<IExcelRepository, ExcelRepository>();
-
+builder.Services.AddScoped<ISynchronizer, Synchronizer>();
+//var a = builder.Configuration["ddd"];
 builder.Services.Configure<ExcelServiceOption>(builder.Configuration.GetSection("ExcelService"));
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 ﻿using BambooChronoSyncUtility.Application.Models;
+using Microsoft.Extensions.Options;
 using System;
 using System.Net.Sockets;
 
@@ -12,20 +13,23 @@ namespace BambooChronoSyncUtility.Application
     {
         private readonly IBambooHrService _bambooService;
         private readonly IChronoService _chronoService;
+        private readonly DateSettingsOption dateSettingsOption;
         private readonly object locker = new();
         private Dictionary<int, int> types = null!;
         //private 
-        public Synchronizer(IBambooHrService hrService, IChronoService chronoService)
+        public Synchronizer(IBambooHrService hrService, IChronoService chronoService, IOptions<DateSettingsOption> dateSettingsOption)
         {
             (_bambooService, _chronoService) = (hrService, chronoService);
-            
+            this.dateSettingsOption = dateSettingsOption.Value;
         }
 
         public async Task<int> Synchronize()
         {
             DateOnly start, end;
             // Get period
-            GetPeriod(ref start, ref end, /*for test*/ 3);
+            start = dateSettingsOption.PeriodStart;
+            end = dateSettingsOption.PeriodEnd;
+            //GetPeriod(ref start, ref end, /*for test*/ 3);
             // Get list of id's and names
             List<UserIdName> userIdNameList = await GetEmploees();
             // Add Chrono's userId's
@@ -160,9 +164,8 @@ namespace BambooChronoSyncUtility.Application
         private void GetPeriod1(ref DateOnly start, ref DateOnly end)
         {
             DateTime date = DateTime.UtcNow;
-            start = new DateOnly(date.Year, date.Month, 1);
-            int allDayMonth = DateTime.DaysInMonth(date.Year, date.Month);
-            end = new DateOnly(date.Year, date.Month, allDayMonth);
+            start = (new DateOnly(date.Year, date.Month, date.Day)).GetMonday();
+            end = start.AddDays(13);
         }
         private void GetPeriod2(ref DateOnly start, ref DateOnly end)
         {

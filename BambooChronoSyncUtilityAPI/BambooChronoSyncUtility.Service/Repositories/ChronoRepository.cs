@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,8 +23,13 @@ namespace BambooChronoSyncUtility.Service.Repositories
     {
         private readonly int TimeOffId = -1; //900;
         private readonly ChronoContext _context;
-        
-        public ChronoRepository(ChronoContext context) => _context = context;
+        private readonly DAL.EF.Model.FieldInfo fieldInfo;
+
+        public ChronoRepository(ChronoContext context)
+        {
+            _context = context;
+            fieldInfo =  _context.FieldInfos.First(t => t.Id == 0);
+        }
         
         public async Task<Dictionary<TimeDictionary, double>> GetTimeOff(int Id, DateTime start, DateTime end)
         {
@@ -100,9 +106,9 @@ namespace BambooChronoSyncUtility.Service.Repositories
         }
         private async Task AddReport(int userId, int taskId, DateTime date, double hours)
         {
-            var tr = await _context.TimeReports.FirstOrDefaultAsync(t => t.Type == 0);
-            int ty = tr.Type;
-            var tn = await _context.FieldInfos.FirstAsync(t => t.Id == 0);
+            //var tr = await _context.TimeReports.FirstOrDefaultAsync(t => t.Type == 0);
+            //int ty = tr.Type;
+            //var tn = await _context.FieldInfos.FirstAsync(t => t.Id == 0);
             try
             {
                 await StartTransaction();
@@ -115,7 +121,7 @@ namespace BambooChronoSyncUtility.Service.Repositories
                     LastUpdated = DateTime.UtcNow,
                     //Type = 0,
                     Hours = hours,
-                    TypeNavigation = tn,
+                    TypeNavigation = fieldInfo,
 
                 };
                 _context.TimeReports.Add(report);

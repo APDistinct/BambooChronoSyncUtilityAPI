@@ -13,22 +13,22 @@ namespace BambooChronoSyncUtility.Application
     {
         private readonly IBambooHrService _bambooService;
         private readonly IChronoService _chronoService;
-        private readonly DateSettingsOption dateSettingsOption;
+        private readonly DateSettingsOption _dateSettingsOption;
         private readonly object locker = new();
         private Dictionary<int, int> types = null!;
         //private 
         public Synchronizer(IBambooHrService hrService, IChronoService chronoService, IOptions<DateSettingsOption> dateSettingsOption)
         {
             (_bambooService, _chronoService) = (hrService, chronoService);
-            this.dateSettingsOption = dateSettingsOption.Value;
+            _dateSettingsOption = dateSettingsOption.Value;
         }
 
         public async Task<int> Synchronize()
         {
             DateOnly start, end;
             // Get period
-            start = dateSettingsOption.PeriodStart;
-            end = dateSettingsOption.PeriodEnd;
+            start = _dateSettingsOption.PeriodStart;
+            end = _dateSettingsOption.PeriodEnd;
             //GetPeriod(ref start, ref end, /*for test*/ 3);
             // Get list of id's and names
             List<UserIdName> userIdNameList = await GetEmploees();

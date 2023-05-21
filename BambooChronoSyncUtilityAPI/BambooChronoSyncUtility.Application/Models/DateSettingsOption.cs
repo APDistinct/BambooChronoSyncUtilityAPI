@@ -11,18 +11,20 @@ namespace BambooChronoSyncUtility.Application.Models
         public int PeriodLengthType {  get; set; }  // Тип периода запроса данных
         public string PeriodType { get; set; } = string.Empty;  // Период запуска синхронизации
         public int DayOfPeriodStart { get; set; }  //  День запуска в периоде
-        public TimeOnly TimeOfDayStart { get; set; }  //  Время в дне
-        public /*DateOnly*/ string DateBegin { get; set; }  //  Дата начала периода опроса
-        public /*DateOnly*/ string DateEnd { get; set; }  //  Дата окончания периода опроса
+        public string TimeOfDayStart { get; set; } = string.Empty;  //  Время в дне
+        public /*DateOnly*/ string DateBegin { get; set; } = string.Empty;  //  Дата начала периода опроса
+        public string DateEnd { get; set; } = string.Empty;  //  Дата окончания периода опроса
+
+        private TimeOnly tTimeOfDayStart { get; set; }
         private DateOnly dDateBegin { get; set; }
         public DateOnly dDateEnd { get; set; }
         private bool changed = false;
         public DateOnly PeriodStart => GetStart(); // DateBegin; 
         public DateOnly PeriodEnd => GetEnd(); // DateEnd;
-        public DateSettingsOption()
-        {
+        //public DateSettingsOption()
+        //{
             //GetPeriod();
-        }
+        //}
         private DateOnly GetStart()
         {
             if (!changed) { GetPeriod(); }
@@ -58,28 +60,28 @@ namespace BambooChronoSyncUtility.Application.Models
             }
             changed = true;
         }
-        private void GetPeriod1(ref DateOnly start, ref DateOnly end)
-        {
-            DateTime date = DateTime.UtcNow;
-            start = (new DateOnly(date.Year, date.Month, date.Day)).GetMonday();
-            end = start.AddDays(13);
-        }
-        private void GetPeriod2(ref DateOnly start, ref DateOnly end)
-        {
-            // First time - only current month
-            DateTime date = DateTime.UtcNow;
-            start = new DateOnly(date.Year, date.Month, 1);
-            int allDayMonth = DateTime.DaysInMonth(date.Year, date.Month);
-            end = new DateOnly(date.Year, date.Month, allDayMonth);
-        }
-        private void GetPeriod3(ref DateOnly start, ref DateOnly end)
-        {
-            // First time - only for test. Made it for getting from config
-            DateTime date = DateTime.UtcNow;
-            start = new DateOnly(2023, 4, 1);
-            int allDayMonth = DateTime.DaysInMonth(date.Year, date.Month);
-            end = new DateOnly(date.Year, date.Month, allDayMonth);
-        }
+        //private void GetPeriod1(ref DateOnly start, ref DateOnly end)
+        //{
+        //    DateTime date = DateTime.UtcNow;
+        //    start = (new DateOnly(date.Year, date.Month, date.Day)).GetMonday();
+        //    end = start.AddDays(13);
+        //}
+        //private void GetPeriod2(ref DateOnly start, ref DateOnly end)
+        //{
+        //    // First time - only current month
+        //    DateTime date = DateTime.UtcNow;
+        //    start = new DateOnly(date.Year, date.Month, 1);
+        //    int allDayMonth = DateTime.DaysInMonth(date.Year, date.Month);
+        //    end = new DateOnly(date.Year, date.Month, allDayMonth);
+        //}
+        //private void GetPeriod3(ref DateOnly start, ref DateOnly end)
+        //{
+        //    // First time - only for test. Made it for getting from config
+        //    DateTime date = DateTime.UtcNow;
+        //    start = new DateOnly(2023, 4, 1);
+        //    int allDayMonth = DateTime.DaysInMonth(date.Year, date.Month);
+        //    end = new DateOnly(date.Year, date.Month, allDayMonth);
+        //}
     }
     
 }

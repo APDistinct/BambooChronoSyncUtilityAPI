@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BambooChronoSyncUtility.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BambooChronoSyncUtility.DAL.EF", "BambooChronoSyncUtility.DAL.EF\BambooChronoSyncUtility.DAL.EF.csproj", "{BA88D55E-9EDF-435F-A01C-464EB5C5ADC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BambooChronoSyncUtility.Application", "BambooChronoSyncUtility.Application\BambooChronoSyncUtility.Application.csproj", "{6BD848C5-A251-4467-AC6B-5AB6E2004B5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BambooChronoSyncUtility.Application", "BambooChronoSyncUtility.Application\BambooChronoSyncUtility.Application.csproj", "{6BD848C5-A251-4467-AC6B-5AB6E2004B5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BambooChronoSyncUtilityWorkerService", "BambooChronoSyncUtilityWorkerService\BambooChronoSyncUtilityWorkerService.csproj", "{B5E9CE7E-88E5-4B81-89B4-BC96F0A380F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6BD848C5-A251-4467-AC6B-5AB6E2004B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD848C5-A251-4467-AC6B-5AB6E2004B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD848C5-A251-4467-AC6B-5AB6E2004B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E9CE7E-88E5-4B81-89B4-BC96F0A380F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E9CE7E-88E5-4B81-89B4-BC96F0A380F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E9CE7E-88E5-4B81-89B4-BC96F0A380F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E9CE7E-88E5-4B81-89B4-BC96F0A380F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

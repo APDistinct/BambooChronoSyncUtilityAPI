@@ -1,0 +1,38 @@
+2023-05-23 19:53:42.8218 Info Message Template Auto Format enabled
+2023-05-23 19:53:42.9050 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-23 19:53:43.3226 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-23 19:53:43.4259 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-23 19:53:43.5698 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-23 19:53:43.7274 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Target of type: Seq
+ ---> System.ArgumentException: Target type-alias is unknown: 'Seq'
+   at NLog.Config.Factory`2.CreateInstance(String itemName)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String classType, INamedItemFactory`2 factory)
+   --- End of inner exception stack trace ---
+2023-05-23 19:53:44.4158 Info Registered target NLog.Targets.Wrappers.BufferingTargetWrapper(Name=seq)
+2023-05-23 19:53:44.4568 Info Validating config: TargetNames=file, console, ConfigItems=71, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-23 19:53:46.0055 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-23 19:53:46.0055 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-23 19:53:46.0212 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: seq
+2023-05-23 19:53:46.0744 Warn BufferingWrapper(Name=seq): Exception in Initialize Exception: NLog.NLogConfigurationException: Required parameter 'WrappedTarget' on 'BufferingWrapper(Name=seq)' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Targets.Target.Initialize(LoggingConfiguration configuration)
+2023-05-23 19:53:47.0473 Info Validating config: TargetNames=file, console, ConfigItems=71, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-23 19:53:47.0473 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-24 01:03:24.1496 Info Message Template Auto Format enabled
+2023-05-24 01:03:24.1608 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-24 01:03:24.2520 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-24 01:03:24.2555 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-24 01:03:24.3176 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-24 01:03:24.3737 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-24 01:03:24.3836 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-24 01:03:24.4258 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-24 01:03:25.9946 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-24 01:03:26.0167 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()

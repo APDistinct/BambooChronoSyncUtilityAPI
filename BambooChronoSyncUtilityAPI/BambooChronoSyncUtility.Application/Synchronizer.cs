@@ -146,43 +146,43 @@ namespace BambooChronoSyncUtility.Application
             return  await _chronoService.GetTypes();
             
         }
-        private void GetPeriod(ref DateOnly start,  ref DateOnly end, int kind = 0)
-        {
-            // TODO: make variants from config settings
-            switch (kind)
-            {
-                case 1 : GetPeriod1(ref start, ref end);
-                    break;
-                case 2:
-                    GetPeriod2(ref start, ref end);
-                    break;
-                case 3:
-                    GetPeriod3(ref start, ref end);
-                    break;
-            }
-        }
-        private void GetPeriod1(ref DateOnly start, ref DateOnly end)
-        {
-            DateTime date = DateTime.UtcNow;
-            start = (new DateOnly(date.Year, date.Month, date.Day)).GetMonday();
-            end = start.AddDays(13);
-        }
-        private void GetPeriod2(ref DateOnly start, ref DateOnly end)
-        {
-            // First time - only current month
-            DateTime date = DateTime.UtcNow;
-            start = new DateOnly(date.Year, date.Month, 1);
-            int allDayMonth = DateTime.DaysInMonth(date.Year, date.Month);
-            end = new DateOnly(date.Year, date.Month, allDayMonth);
-        }
-        private void GetPeriod3(ref DateOnly start, ref DateOnly end)
-        {
-            // First time - only for test. Made it for getting from config
-            DateTime date = DateTime.UtcNow;
-            start = new DateOnly(2023, 4, 1);
-            int allDayMonth = DateTime.DaysInMonth(date.Year, date.Month);
-            end = new DateOnly(date.Year, date.Month, allDayMonth);
-        }
+        //private void GetPeriod(ref DateOnly start,  ref DateOnly end, int kind = 0)
+        //{
+        //    // TODO: make variants from config settings
+        //    switch (kind)
+        //    {
+        //        case 1 : GetPeriod1(ref start, ref end);
+        //            break;
+        //        case 2:
+        //            GetPeriod2(ref start, ref end);
+        //            break;
+        //        case 3:
+        //            GetPeriod3(ref start, ref end);
+        //            break;
+        //    }
+        //}
+        //private void GetPeriod1(ref DateOnly start, ref DateOnly end)
+        //{
+        //    DateTime date = DateTime.UtcNow;
+        //    start = (new DateOnly(date.Year, date.Month, date.Day)).GetMonday();
+        //    end = start.AddDays(13);
+        //}
+        //private void GetPeriod2(ref DateOnly start, ref DateOnly end)
+        //{
+        //    // First time - only current month
+        //    DateTime date = DateTime.UtcNow;
+        //    start = new DateOnly(date.Year, date.Month, 1);
+        //    int allDayMonth = DateTime.DaysInMonth(date.Year, date.Month);
+        //    end = new DateOnly(date.Year, date.Month, allDayMonth);
+        //}
+        //private void GetPeriod3(ref DateOnly start, ref DateOnly end)
+        //{
+        //    // First time - only for test. Made it for getting from config
+        //    DateTime date = DateTime.UtcNow;
+        //    start = new DateOnly(2023, 4, 1);
+        //    int allDayMonth = DateTime.DaysInMonth(date.Year, date.Month);
+        //    end = new DateOnly(date.Year, date.Month, allDayMonth);
+        //}
         private static bool IsInt(string? value)
         {
             return !string.IsNullOrEmpty(value) && int.TryParse(value, out int _);

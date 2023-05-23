@@ -10,6 +10,7 @@ using BambooChronoSyncUtility.Service.Repositories;
 using BambooChronoSyncUtility.Application.Models;
 using Microsoft.Extensions.Configuration;
 using BambooChronoSyncUtility.Application;
+using BambooChronoSyncUtilityAPI.Background;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
@@ -58,10 +59,13 @@ try
     //var a = builder.Configuration["ddd"];
     builder.Services.Configure<ExcelServiceOption>(builder.Configuration.GetSection("ExcelService"));
     builder.Services.Configure<DateSettingsOption>(builder.Configuration.GetSection("DateSettings"));
+
+    builder.Services.AddHostedService<Worker>();
+        
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
+    if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     {
         app.UseSwagger();
         app.UseSwaggerUI();

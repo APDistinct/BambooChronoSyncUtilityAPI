@@ -58,5 +58,9 @@ namespace BambooChronoSyncUtility.Service.Services
             }
             return count;
         }
+        public async Task<string> TestDB()
+        {
+            return await _chronoRepository.Test();
+        }
     }
 }

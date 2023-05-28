@@ -36,3 +36,45 @@
 2023-05-24 01:03:26.0167 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
    at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
    at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-24 11:53:32.0142 Info Message Template Auto Format enabled
+2023-05-24 11:53:32.0681 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-24 11:53:32.2941 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-24 11:53:32.2941 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-24 11:53:32.5249 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-24 11:53:32.5655 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-24 11:53:32.6125 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-24 11:53:32.8992 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-24 11:53:34.8409 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-24 11:53:34.8409 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-24 11:56:15.8878 Info Message Template Auto Format enabled
+2023-05-24 11:56:15.8978 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-24 11:56:16.0026 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-24 11:56:16.0067 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-24 11:56:16.0724 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-24 11:56:16.1199 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-24 11:56:16.1740 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-24 11:56:16.2288 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-24 11:56:18.3261 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-24 11:56:18.3261 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-24 12:00:36.2674 Info Message Template Auto Format enabled
+2023-05-24 12:00:36.2780 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-24 12:00:36.3811 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-24 12:00:36.3811 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-24 12:00:36.6562 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-24 12:00:36.7397 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-24 12:00:36.7397 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-24 12:00:36.9439 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-24 12:00:39.1000 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-24 12:00:39.1000 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()

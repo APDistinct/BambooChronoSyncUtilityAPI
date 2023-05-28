@@ -56,6 +56,7 @@ try
     builder.Services.AddScoped<IChronoRepository, ChronoRepository>();
     builder.Services.AddScoped<IExcelRepository, ExcelRepository>();
     builder.Services.AddScoped<ISynchronizer, Synchronizer>();
+    builder.Services.AddScoped<IWorkerOption, WorkerOption>();
     //var a = builder.Configuration["ddd"];
     builder.Services.Configure<ExcelServiceOption>(builder.Configuration.GetSection("ExcelService"));
     builder.Services.Configure<DateSettingsOption>(builder.Configuration.GetSection("DateSettings"));

@@ -18,6 +18,7 @@ namespace BambooChronoSyncUtility.Service.Repositories
         Task<Dictionary<TimeDictionary, string>> GetStatus(int Id, DateTime start, DateTime end);
         Task GetChronoUserIds(IEnumerable<IUserIdChrono> idChronos);
         Task<int> SaveDaysOff(TimeOffModel timeOffModel);
+        Task<string> Test();
     }
     public class ChronoRepository : IChronoRepository
     {
@@ -144,6 +145,11 @@ namespace BambooChronoSyncUtility.Service.Repositories
                 await RollbackTransaction();
                 //  Отловить и передать. Или же ловить выше...
             }
+        }
+        public async Task<string> Test()
+        {
+            var str = (await _context.VirtualProjects.FirstOrDefaultAsync()).Name;
+            return str;
         }
         public static DateTime GetMonday(DateTime date)
         {

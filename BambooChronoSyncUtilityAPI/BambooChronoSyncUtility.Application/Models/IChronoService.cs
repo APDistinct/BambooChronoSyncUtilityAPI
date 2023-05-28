@@ -14,5 +14,6 @@ namespace BambooChronoSyncUtility.Application.Models
         Task<int> SaveDaysOff(IEnumerable<TimeOffModel> timeOffModels);
         Task<IEnumerable<UserIdBambooHR>> GetUserIds();
         Task GetChronoUserIds(IEnumerable<IUserIdChrono> idChronos);
+        Task<string> TestDB();
     }
 }

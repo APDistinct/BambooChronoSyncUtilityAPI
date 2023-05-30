@@ -34,8 +34,10 @@ namespace BambooChronoSyncUtility.Application.Models
             //  Потом доработать под разне периоды. 
             //  В данный момент пока только "Day"
             date = new DateTime(today.Year, today.Month, today.Day, TimeOfDayStart.Hour, TimeOfDayStart.Minute, TimeOfDayStart.Second);
-            DateTimeOffset dateOffset = date.ToUniversalTime();
-            if(date > dateOffset) 
+            //DateTimeOffset dateOffset = date.ToUniversalTime();
+            //if(date > dateOffset)
+            
+            if (date < DateTime.UtcNow)
             {
                 date = date.AddDays(1);
             }

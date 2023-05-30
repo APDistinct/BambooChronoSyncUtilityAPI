@@ -7,8 +7,9 @@ namespace BambooChronoSyncUtilityAPI.Background
     {
         private readonly ILogger<Worker> _logger;
         //private readonly IConfiguration _config;
-        private readonly IWorkerOption _workerOption;
-        private readonly ISynchronizer _synchronizer;
+        private /*readonly */IWorkerOption _workerOption;
+        private readonly IServiceProvider _serviceProvider;
+        //private readonly ISynchronizer _synchronizer;
         private string PeriodType { get; set; } = string.Empty;  // Период запуска синхронизации
         private int DayOfPeriodStart { get; set; }  //  День запуска в периоде
         private string TimeOfDayStart { get; set; } = string.Empty;  //  Время в дне
@@ -16,16 +17,22 @@ namespace BambooChronoSyncUtilityAPI.Background
         private TimeSpan _period;
         private readonly int eps = 100000;
         private bool isWorking = false;
-        public Worker(ISynchronizer synchronizer, IWorkerOption workerOption, ILogger<Worker> logger)
+        public Worker(/*ISynchronizer synchronizer, */IServiceProvider serviceProvider, /*IWorkerOption workerOption, */ILogger<Worker> logger)
         {
             _logger = logger;
-            _workerOption = workerOption;
-            _synchronizer = synchronizer;
+            //_workerOption = workerOption;
+            _serviceProvider = serviceProvider;
+
+            //_synchronizer = synchronizer;
             
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            using var scope = _serviceProvider.CreateScope();
+            var _synchronizer = scope.ServiceProvider.GetRequiredService<ISynchronizer>();
+            _workerOption = scope.ServiceProvider.GetRequiredService<IWorkerOption>();
+
             GetData();
             _logger.LogInformation("Background Synchronizer running at: {time}", DateTimeOffset.Now);
             _logger.LogInformation($"Date : {_date}  period : {_period}");
@@ -45,10 +52,10 @@ namespace BambooChronoSyncUtilityAPI.Background
 
                 //  Получение новых данных о дате и периоде
                 GetData();
-                //  Пересчёт периода
-                var newperiod = _date - DateTime.UtcNow;
-                //  По идее - проверка на отрицательное число. И выяснить - почему?
                 _logger.LogInformation("Background Synchronizer running at: {time}", DateTimeOffset.Now);
+                //  Пересчёт периода
+                var newperiod = _date/*.Add(_period)*/ - DateTime.UtcNow;
+                //  По идее - проверка на отрицательное число. И выяснить - почему?
                 await Task.Delay(newperiod, stoppingToken);
             }
         }

@@ -148,7 +148,14 @@ namespace BambooChronoSyncUtility.Service.Repositories
         }
         public async Task<string> Test()
         {
-            var str = (await _context.VirtualProjects.FirstOrDefaultAsync()).Name;
+            string str = "----";
+            var rep = (await _context.TimeReports.OrderByDescending(x => x.Date)
+                .Include(u => u.User).FirstOrDefaultAsync());
+            if(rep != null)
+            {
+                str = $"{rep.UserId.ToString()} {rep.User?.DisplayName ?? "++"}  {rep.Date}";
+            }
+            //var str = (await _context.VirtualProjects.FirstOrDefaultAsync()).Name;
             return str;
         }
         public static DateTime GetMonday(DateTime date)

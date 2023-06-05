@@ -69,12 +69,15 @@ namespace BambooChronoSyncUtility.Application
                     //var time = ll.Where(l => state[l.Key] == )
                     foreach (var togr in cTime)
                     {
-                        if (status.ContainsKey(togr.Key))
+                        if (togr.Value > 0)
                         {
-                            if (Settings.StatesAll.Contains(status[togr.Key]))
+                            if (status.ContainsKey(togr.Key))
                             {
-                                bool ret = time.TryGetValue(togr.Key, out double val);                                
-                                time[togr.Key] = togr.Value + val;
+                                if (Settings.StatesAll.Contains(status[togr.Key]))
+                                {
+                                    bool ret = time.TryGetValue(togr.Key, out double val);
+                                    time[togr.Key] = togr.Value + val;
+                                }
                             }
                         }
                     }

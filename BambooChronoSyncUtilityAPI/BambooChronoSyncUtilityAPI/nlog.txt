@@ -210,3 +210,146 @@
 2023-05-30 07:56:35.9718 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
    at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
    at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 19:21:40.2067 Info Message Template Auto Format enabled
+2023-05-30 19:21:40.2187 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-30 19:21:40.4786 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-30 19:21:41.1567 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-30 19:21:41.5868 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-30 19:21:41.6427 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 19:21:41.6552 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 19:21:41.7123 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-30 19:21:42.7320 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 19:21:42.7344 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 21:30:34.6356 Info Message Template Auto Format enabled
+2023-05-30 21:30:34.6472 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-30 21:30:34.8661 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-30 21:30:34.8948 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-30 21:30:35.1138 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-30 21:30:35.1963 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 21:30:36.1445 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 21:30:36.1991 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-30 21:30:36.3112 Warn FileTarget(Name=file): Failed to create file appender: D:/BambooChrono/log/2023-05-30/log-2023-05-30.log Exception: System.IO.IOException: The process cannot access the file 'D:\BambooChrono\log\2023-05-30\log-2023-05-30.log' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.TryCreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender..ctor(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender.Factory.NLog.Internal.FileAppenders.IFileAppenderFactory.Open(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.FileAppenderCache.CreateAppender(String fileName, Int32 freeSpot)
+2023-05-30 21:30:37.1761 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 21:30:37.1761 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 21:33:44.9889 Info Message Template Auto Format enabled
+2023-05-30 21:33:45.0002 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-30 21:33:45.3040 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-30 21:33:45.4593 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-30 21:33:45.6223 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-30 21:33:45.6628 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 21:33:45.6734 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 21:33:45.7134 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-30 21:33:45.7908 Warn FileTarget(Name=file): Failed to create file appender: D:/BambooChrono/log/2023-05-30/log-2023-05-30.log Exception: System.IO.IOException: The process cannot access the file 'D:\BambooChrono\log\2023-05-30\log-2023-05-30.log' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.TryCreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender..ctor(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender.Factory.NLog.Internal.FileAppenders.IFileAppenderFactory.Open(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.FileAppenderCache.CreateAppender(String fileName, Int32 freeSpot)
+2023-05-30 21:33:46.9676 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 21:33:46.9676 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 18:50:17.5085 Info Message Template Auto Format enabled
+2023-05-30 18:50:17.5609 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-30 18:50:17.6751 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-30 18:50:17.6751 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-30 18:50:17.9646 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-30 18:50:18.0068 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 18:50:18.0483 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 18:50:18.3855 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-30 18:50:18.5074 Warn FileTarget(Name=file): Failed to create file appender: D:/BambooChrono/log/2023-05-30/log-2023-05-30.log Exception: System.IO.IOException: The process cannot access the file 'D:\BambooChrono\log\2023-05-30\log-2023-05-30.log' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.TryCreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender..ctor(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender.Factory.NLog.Internal.FileAppenders.IFileAppenderFactory.Open(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.FileAppenderCache.CreateAppender(String fileName, Int32 freeSpot)
+2023-05-30 18:50:20.2918 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 18:50:20.2918 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 18:51:03.8355 Info Message Template Auto Format enabled
+2023-05-30 18:51:03.8468 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-30 18:51:04.0278 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-30 18:51:04.0314 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-30 18:51:04.2356 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-30 18:51:04.3214 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 18:51:04.3346 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 18:51:04.3877 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-30 18:51:04.5425 Warn FileTarget(Name=file): Failed to create file appender: D:/BambooChrono/log/2023-05-30/log-2023-05-30.log Exception: System.IO.IOException: The process cannot access the file 'D:\BambooChrono\log\2023-05-30\log-2023-05-30.log' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.TryCreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender..ctor(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender.Factory.NLog.Internal.FileAppenders.IFileAppenderFactory.Open(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.FileAppenderCache.CreateAppender(String fileName, Int32 freeSpot)
+2023-05-30 18:51:05.9254 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 18:51:05.9254 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 18:53:02.3669 Info Message Template Auto Format enabled
+2023-05-30 18:53:02.3783 Info Loading assembly: NLog.Web.AspNetCore
+2023-05-30 18:53:02.4855 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-05-30 18:53:02.4855 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-05-30 18:53:02.5504 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-05-30 18:53:02.5892 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 18:53:02.5970 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-05-30 18:53:02.6405 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-05-30 18:53:02.7391 Warn FileTarget(Name=file): Failed to create file appender: D:/BambooChrono/log/2023-05-30/log-2023-05-30.log Exception: System.IO.IOException: The process cannot access the file 'D:\BambooChrono\log\2023-05-30\log-2023-05-30.log' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.TryCreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender..ctor(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.SingleProcessFileAppender.Factory.NLog.Internal.FileAppenders.IFileAppenderFactory.Open(String fileName, ICreateFileParameters parameters)
+   at NLog.Internal.FileAppenders.FileAppenderCache.CreateAppender(String fileName, Int32 freeSpot)
+2023-05-30 18:53:03.9519 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-05-30 18:53:03.9519 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-06-05 09:07:18.6473 Info Message Template Auto Format enabled
+2023-06-05 09:07:18.6779 Info Loading assembly: NLog.Web.AspNetCore
+2023-06-05 09:07:18.8003 Info Registered target NLog.Targets.FileTarget(Name=allfile)
+2023-06-05 09:07:18.8003 Info Registered target NLog.Targets.FileTarget(Name=file)
+2023-06-05 09:07:19.0273 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
+2023-06-05 09:07:19.0623 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-06-05 09:07:19.1279 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()
+2023-06-05 09:07:19.4431 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2023-06-05 09:07:21.8945 Info Validating config: TargetNames=file, console, ConfigItems=68, FilePath=D:\Projects\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\BambooChronoSyncUtilityAPI\bin\Debug\net6.0\NLog.config
+2023-06-05 09:07:21.8945 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Required parameter 'Condition' on 'NLog.Targets.ConsoleRowHighlightingRule' was not specified.
+   at NLog.Internal.PropertyHelper.CheckRequiredParameters(Object o)
+   at NLog.Config.LoggingConfiguration.ValidateConfig()

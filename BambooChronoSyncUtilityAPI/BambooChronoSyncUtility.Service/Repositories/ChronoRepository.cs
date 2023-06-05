@@ -2,6 +2,7 @@
 using BambooChronoSyncUtility.Application.Models;
 using BambooChronoSyncUtility.DAL.EF.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,11 +25,13 @@ namespace BambooChronoSyncUtility.Service.Repositories
     {
         private readonly int TimeOffId = -1; //900;
         private readonly ChronoContext _context;
+        private readonly ILogger<ChronoRepository> _logger;
         private readonly DAL.EF.Model.FieldInfo fieldInfo;
 
-        public ChronoRepository(ChronoContext context)
+        public ChronoRepository(ChronoContext context, ILogger<ChronoRepository> logger)
         {
             _context = context;
+            _logger = logger;
             fieldInfo =  _context.FieldInfos.First(t => t.Id == 0);
         }
         
@@ -110,6 +113,7 @@ namespace BambooChronoSyncUtility.Service.Repositories
             //var tr = await _context.TimeReports.FirstOrDefaultAsync(t => t.Type == 0);
             //int ty = tr.Type;
             //var tn = await _context.FieldInfos.FirstAsync(t => t.Id == 0);
+            
             try
             {
                 await StartTransaction();
@@ -127,6 +131,7 @@ namespace BambooChronoSyncUtility.Service.Repositories
                 };
                 _context.TimeReports.Add(report);
                 await _context.SaveChangesAsync();
+                _logger.LogDebug($"Fix report {userId} {taskId} {date} {hours}");
                 var q = _context.TaskStatuses
                     .FirstOrDefaultAsync(ts => ts.UserId == userId && ts.ProjectId == TimeOffId && ts.StartDate == GetMonday(date) && ts.TaskId == taskId);
                 //string str = q.ToQueryString(); //.ToString();
@@ -135,6 +140,7 @@ namespace BambooChronoSyncUtility.Service.Repositories
                 {
                     _context.TaskStatuses.Add(status = new()
                     { ProjectId = TimeOffId, StartDate = GetMonday(date), Status = Settings.StateAdd, TaskId = taskId, UserId = userId });
+                    _logger.LogDebug($"Add status {userId} {taskId} {date} {Settings.StateAdd}");
                 }
                 
                 await _context.SaveChangesAsync();
@@ -142,8 +148,9 @@ namespace BambooChronoSyncUtility.Service.Repositories
             }
             catch(Exception ex) 
             {
-                await RollbackTransaction();
                 //  Отловить и передать. Или же ловить выше...
+                _logger.LogDebug($"Error fixing report {userId} {taskId} {date} {hours} {ex.Message}");
+                await RollbackTransaction();
             }
         }
         public async Task<string> Test()

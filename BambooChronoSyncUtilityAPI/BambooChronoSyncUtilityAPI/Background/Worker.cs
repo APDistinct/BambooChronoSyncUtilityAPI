@@ -55,6 +55,7 @@ namespace BambooChronoSyncUtilityAPI.Background
                 _logger.LogInformation("Background Synchronizer running at: {time}", DateTimeOffset.Now);
                 //  Пересчёт периода
                 var newperiod = _date/*.Add(_period)*/ - DateTime.UtcNow;
+                _logger.LogInformation($"New period {newperiod}");
                 //  По идее - проверка на отрицательное число. И выяснить - почему?
                 await Task.Delay(newperiod, stoppingToken);
             }

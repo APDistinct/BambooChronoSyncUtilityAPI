@@ -3,7 +3,9 @@ using BambooChronoSyncUtility.DAL.EF.Model;
 using BambooChronoSyncUtility.Service.Repositories;
 using BambooChronoSyncUtility.Service.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,7 @@ namespace BambooChronoSyncUtility.Tests
     {
         private readonly ExcelServiceOption _options = new();
         private readonly IChronoRepository _chronoRepository;
+        private readonly Mock<ILogger<ChronoRepository>> _mockLogger = new Mock<ILogger<ChronoRepository>>();
 
         private readonly string connectionString = "Server=APD\\APDSERVER;User Id=txchrono;Password=Tx12cHrono34;Database=TimeTrack";
         private readonly ChronoContext context;
@@ -23,7 +26,7 @@ namespace BambooChronoSyncUtility.Tests
         public AllRepositoryTest()
         {
             context = new ChronoContext(GetOptions(connectionString));
-            _chronoRepository = new ChronoRepository(context);
+            _chronoRepository = new ChronoRepository(context, _mockLogger.Object);
         }
         private static DbContextOptions<ChronoContext> GetOptions(string connectionString)
         {
